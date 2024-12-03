@@ -20,9 +20,14 @@ public class Task {
     @Column(name = "conclusion_time")
     private LocalDateTime conclusionTime;
 
-    private Boolean status;
+    private Boolean status = false;
 
     public Task() {
+    }
+
+    public Task(String description, String title) {
+        this.description = description;
+        Title = title;
     }
 
     public Integer getId() {
