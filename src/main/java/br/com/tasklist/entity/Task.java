@@ -1,6 +1,7 @@
 package br.com.tasklist.entity;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Entity
@@ -12,22 +13,23 @@ public class Task {
     private Integer id;
 
     private String description;
-    private String Title;
+    private String title;
 
     @Column(name = "creation_time")
     private LocalDateTime creationTime = LocalDateTime.now();
 
     @Column(name = "conclusion_time")
-    private LocalDateTime conclusionTime;
+    private LocalDate conclusionTime;
 
     private Boolean status = false;
 
     public Task() {
     }
 
-    public Task(String description, String title) {
+    public Task(String description, String title, LocalDate localDateTime) {
         this.description = description;
-        Title = title;
+        this.title = title;
+        this.conclusionTime = localDateTime;
     }
 
     public Integer getId() {
@@ -47,11 +49,11 @@ public class Task {
     }
 
     public String getTitle() {
-        return Title;
+        return this.title;
     }
 
     public void setTitle(String title) {
-        Title = title;
+        this.title = title;
     }
 
     public LocalDateTime getCreationTime() {
@@ -62,11 +64,11 @@ public class Task {
         this.creationTime = creationTime;
     }
 
-    public LocalDateTime getConclusionTime() {
+    public LocalDate getConclusionTime() {
         return conclusionTime;
     }
 
-    public void setConclusionTime(LocalDateTime conclusionTime) {
+    public void setConclusionTime(LocalDate conclusionTime) {
         this.conclusionTime = conclusionTime;
     }
 
@@ -82,7 +84,7 @@ public class Task {
     public String toString() {
         return "Task{" +
                 "description='" + description + '\'' +
-                ", Title='" + Title + '\'' +
+                ", Title='" + title + '\'' +
                 ", creationTime=" + creationTime +
                 ", conclusionTime=" + conclusionTime +
                 ", status=" + status +

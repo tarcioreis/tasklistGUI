@@ -6,6 +6,8 @@ import br.com.tasklist.entity.Task;
 
 import javax.persistence.EntityManager;
 import javax.swing.text.html.parser.Entity;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 public class TaskService {
 
@@ -14,7 +16,8 @@ public class TaskService {
         EntityManager entityManager = EntityManagerGenerator.getEntityManagerTasklist();
 
         // Transient state
-        Task task1 = new Task("description for the first task", "my first task :)");
+        Task task1 = new Task("description for the first task",
+                "my first task :)", LocalDate.of(2024, 12, 04));
 
         // Managed state
         TaskDao taskDao = new TaskDao(entityManager);
